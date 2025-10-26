@@ -4,6 +4,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\UserAuthController;
 use App\Http\Controllers\Api\HotelController;
+use App\Http\Controllers\Api\RoomController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -26,3 +28,4 @@ Route::post('/login', [UserAuthController::class, 'login']);
 Route::post('/logout', [UserAuthController::class, 'logout'])->middleware('auth:sanctum');
 
 Route::apiResource('hotel', HotelController::class)->middleware('auth:sanctum');
+Route::apiResource('room', RoomController::class)->middleware('auth:sanctum');
