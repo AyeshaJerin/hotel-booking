@@ -9,4 +9,9 @@ class Hotel extends Model
 {
     use HasFactory;
     protected $fillable=['name','address','decription','image','rating','phone'];
+
+    public function getImageAttribute($value)
+    {
+        return $value ? url('/' . $value) : null;
+    }
 }

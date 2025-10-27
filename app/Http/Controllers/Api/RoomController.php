@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Room;
 
 class RoomController extends Controller
 {
@@ -12,16 +13,8 @@ class RoomController extends Controller
      */
     public function index()
     {
-         $data = Room::get();
+        $data = Room::with('hotel')->get();
         return response()->json($data, 200);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
     }
 
     /**

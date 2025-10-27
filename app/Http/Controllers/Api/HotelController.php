@@ -23,6 +23,11 @@ class HotelController extends Controller
     public function store(Request $request)
     {
         $requestdata= $request->all();
+        if($request->hasFile('image')){
+            $imageName = time().'.'.$request->image->extension();
+            $request->image->move(public_path('images'), $imageName);
+            $requestdata['image'] = 'images/'.$imageName;
+        }
         Hotel::create($requestdata);
         return response()->json(['message'=>'Hotel created successfully'],200);
     }
@@ -40,7 +45,14 @@ class HotelController extends Controller
      */
     public function update(Request $request, Hotel $hotel)
     {
-        $hotel->update($request->all());
+        $requestdata= $request->all();
+        if($request->hasFile('image')){
+            $imageName = time().'.'.$request->image->extension();
+            $request->image->move(public_path('images'), $imageName);
+            $requestdata['image'] = 'images/'.$imageName;
+        }
+
+        $hotel->update($requestdata);
         return response()->json(['message'=>'Hotel updated successfully'],200);
     }
 
