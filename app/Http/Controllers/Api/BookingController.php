@@ -13,7 +13,7 @@ class BookingController extends Controller
      */
     public function index()
     {
-        $data = Booking::with('booking')->get();
+        $data = Booking::with('hotel')->get();
         return response()->json($data, 200);
     }
 
@@ -59,5 +59,9 @@ class BookingController extends Controller
     {
        $booking->delete();
         return response()->json(['message'=>'Booking deleted successfully'],200);
+    }
+
+    public function booking(){
+
     }
 }
