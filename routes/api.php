@@ -29,7 +29,9 @@ Route::post('/register', [UserAuthController::class, 'register']);
 Route::post('/login', [UserAuthController::class, 'login']);
 Route::post('/logout', [UserAuthController::class, 'logout'])->middleware('auth:sanctum');
 
-Route::apiResource('hotel', HotelController::class)->middleware('auth:sanctum');
+// Route::apiResource('hotel', HotelController::class)->middleware('auth:sanctum');
+Route::apiResource('hotel', HotelController::class);
+
 Route::apiResource('room', RoomController::class)->middleware('auth:sanctum');
 Route::apiResource('booking', BookingController::class)->middleware('auth:sanctum');
 
