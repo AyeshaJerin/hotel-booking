@@ -60,4 +60,9 @@ class RoomController extends Controller
        $room->delete();
         return response()->json(['message'=>'Room deleted successfully'],200);
     }
+
+    public function getRoomByHotel($id){
+        $data = Room::where('hotel_id',$id)->get();
+        return response()->json($data, 200);
+    }
 }
